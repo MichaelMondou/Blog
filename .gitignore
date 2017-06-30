@@ -20,3 +20,4 @@
 
 /vendor/*
 /config/database.yml
+/.idea/*
