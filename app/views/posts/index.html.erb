@@ -21,10 +21,22 @@
         <td><%= post.publish_date.strftime('%d/%m/%Y %H:%M') %></td>
         <td><%= post.heading %></td>
         <td><%= post.image %></td>
-        <td><%= post.user.fullname %></td>
+        <td>
+          <% if !post.user.nil? %>
+            <%= post.user.fullname %>
+          <% else %>
+            Non renseigné
+          <% end %>
+        </td>
         <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if user_signed_in? %>
+          <td><%= link_to 'Edit', edit_post_path(post) %></td>
+          <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% else %>
+          <td></td>
+          <td></td>
+          <td></td>
+        <% end %>
       </tr>
     <% end %>
     <%= paginate @posts %>
@@ -32,5 +44,6 @@
 </table>
 
 <br>
-
-<%= link_to 'New Post', new_post_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Post', new_post_path %>
+<% end %>

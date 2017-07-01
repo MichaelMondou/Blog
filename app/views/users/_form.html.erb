@@ -11,20 +11,39 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :lastname %>
-    <%= form.text_field :lastname, id: :user_lastname %>
-  </div>
+    <div class="field">
+      <%= form.label :lastname %>
+      <%= form.text_field :lastname %>
+    </div>
 
-  <div class="field">
-    <%= form.label :firstname %>
-    <%= form.text_field :firstname, id: :user_firstname %>
-  </div>
+    <div class="field">
+      <%= form.label :firstname %>
+      <%= form.text_field :firstname %>
+    </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email, id: :user_email %>
-  </div>
+    <div class="field">
+      <%= form.label :email %><br />
+      <%= form.email_field :email, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= form.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= form.password_field :password, autocomplete: "off" %>
+      <% if @minimum_password_length %>
+          <br />
+          <em><%= @minimum_password_length %> characters minimum</em>
+      <% end %>
+    </div>
+
+    <div class="field">
+      <%= form.label :password_confirmation %><br />
+      <%= form.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+      <%= form.password_field :current_password, autocomplete: "off" %>
+    </div>
 
   <div class="actions">
     <%= form.submit %>

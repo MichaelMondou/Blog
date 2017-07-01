@@ -36,11 +36,6 @@
     <%= form.text_field :image, id: :post_image %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.collection_select :user_id, User.all, :id, :fullname %>
-  </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>
