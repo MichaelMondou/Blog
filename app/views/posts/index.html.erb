@@ -1,3 +1,4 @@
+<p id="notice"><%= notice %></p>
 
 <div class="center" style="margin-bottom: 20px;">
   <h1>Posts</h1>
@@ -11,7 +12,7 @@
               <%= link_to post.title, post_path(post) %> <%= link_to post.user.fullname, user_path(post.user), class: "pull-right" %>
             </div>
             <div class="panel-body text-center">
-              <h6><%= post.image %></h6>
+              <h6><%= image_tag post.image.thumb.url, size: 30 %></h6>
               <h6><%= post.publish_date.strftime('%d/%m/%Y %H:%M') %></h6>
               <h5><%= post.heading %> </h5>
               <%= link_to 'Show', post, class: "btn btn-default" %>
