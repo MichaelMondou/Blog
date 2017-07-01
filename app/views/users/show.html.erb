@@ -15,5 +15,38 @@
   <%= @user.email %>
 </p>
 
+<h2>User posts</h2>
+
+<hr>
+
+<% @user.posts.each do |post| %>
+    <p>
+      <strong>Title:</strong>
+      <%= post.title %>
+    </p>
+
+    <p>
+      <strong>Publish date:</strong>
+      <%= post.publish_date %>
+    </p>
+
+    <p>
+      <strong>Heading:</strong>
+      <%= post.heading %>
+    </p>
+
+    <p>
+      <strong>Body:</strong>
+      <%= post.body %>
+    </p>
+
+    <p>
+      <strong>Image:</strong>
+      <%= post.image %>
+    </p>
+
+    <hr>
+<% end %>
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
