@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :posts
 
   def fullname
-    [firstname, lastname].join(' ')
+    [firstname.capitalize, lastname.capitalize].join(' ')
   end
 
 end
