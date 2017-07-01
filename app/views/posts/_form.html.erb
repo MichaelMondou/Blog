@@ -1,47 +1,49 @@
-<%= form_with(model: post, local: true) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3" >
+    <div class="panel panel-default">
+      <div class="panel-heading" >
+        <h5 class="center"><%= form_title %></h5>
+      </div>
+      <div class="panel-body">
+        <%= form_with(model: post, local: true) do |form| %>
+            <% if post.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
-      <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+                  <ul>
+                    <% post.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                    <% end %>
+                  </ul>
+                </div>
+            <% end %>
+            <div class="form-group">
+              <%= form.label :title %>
+              <%= form.text_field :title, id: :post_title, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= form.label :publish_date %>
+              <%= form.datetime_select :publish_date, id: :post_publish_date, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= form.label :heading %>
+              <%= form.text_area :heading, id: :post_heading, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= form.label :body %>
+              <%= form.text_area :body, id: :post_body, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= form.label :image %>
+              <%= form.text_field :image, id: :post_image, class: "form-control" %>
+            </div>
+            <div class="form-group">
+              <%= form.label :user_id %>
+              <%= form.collection_select :user_id, User.all, :id, :fullname, class: "form-control" %>
+            </div>
+            <button class="btn btn-success center-block" type="submit">Envoyer</button>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :post_title %>
   </div>
-
-  <div class="field">
-    <%= form.label :publish_date %>
-    <%= form.datetime_select :publish_date, id: :post_publish_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :heading %>
-    <%= form.text_area :heading, id: :post_heading %>
-  </div>
-
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body, id: :post_body %>
-  </div>
-
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.text_field :image, id: :post_image %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.collection_select :user_id, User.all, :id, :fullname %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

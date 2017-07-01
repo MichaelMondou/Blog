@@ -1,52 +1,19 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-lg-8 col-lg-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading center">
+        <h4><%= @user.firstname.capitalize + " " + @user.lastname.capitalize %></h4>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <li><h5><%= @user.email %></h5></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
-<p>
-  <strong>Lastname:</strong>
-  <%= @user.lastname %>
-</p>
-
-<p>
-  <strong>Firstname:</strong>
-  <%= @user.firstname %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<h2>User posts</h2>
-
-<hr>
-
-<% @user.posts.each do |post| %>
-    <p>
-      <strong>Title:</strong>
-      <%= post.title %>
-    </p>
-
-    <p>
-      <strong>Publish date:</strong>
-      <%= post.publish_date %>
-    </p>
-
-    <p>
-      <strong>Heading:</strong>
-      <%= post.heading %>
-    </p>
-
-    <p>
-      <strong>Body:</strong>
-      <%= post.body %>
-    </p>
-
-    <p>
-      <strong>Image:</strong>
-      <%= post.image %>
-    </p>
-
-    <hr>
-<% end %>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<div class="center">
+  <%= link_to 'Edit', edit_user_path(@user), class: "btn btn-default" %> |
+  <%= link_to 'Back', users_path, class: "btn btn-default" %>
+</div>
