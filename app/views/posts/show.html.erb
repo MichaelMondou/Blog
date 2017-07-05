@@ -18,6 +18,8 @@
 </div>
 
 <div class="center">
-  <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-default" %> |
+  <% if current_user == @post.user %>
+    <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-default" %> |
+  <% end %>
   <%= link_to 'Back', posts_path, class: "btn btn-default" %>
 </div>
