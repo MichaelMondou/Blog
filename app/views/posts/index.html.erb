@@ -19,8 +19,11 @@
               <h6><%= post.publish_date.strftime('%d/%m/%Y %H:%M') %></h6>
               <h5><%= post.heading %> </h5>
               <%= link_to 'Show', post, class: "btn btn-default" %>
-              <%= link_to 'Edit', edit_post_path(post), class: "btn btn-default" %>
-              <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+
+              <% if current_user == post.user %>
+                <%= link_to 'Edit', edit_post_path(post), class: "btn btn-default" %>
+                <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %>
+              <% end %>
             </div>
           </div>
         </div>
