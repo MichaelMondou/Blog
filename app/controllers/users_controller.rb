@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
+  before_action :can_update, only: [:update]
+
+  def can_update
+    redirect_to unauthorized_path if User.find(params[:id]) != current_user
+  end
 
   # GET /users
   # GET /users.json
