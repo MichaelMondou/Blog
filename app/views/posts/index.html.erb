@@ -8,6 +8,7 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <%= link_to post.title, post_path(post) %>
+              (<%= post.comments.count %> comment)
               <% if !post.user.nil? %>
                   <%= link_to post.user.fullname, user_path(post.user), class: "pull-right" %>
               <% else %>

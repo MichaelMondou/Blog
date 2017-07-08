@@ -17,9 +17,36 @@
   </div>
 </div>
 
+<% @post.comments.each do |comment| %>
+  <div class="row">
+    <div class="col-lg-6 col-lg-offset-3">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= link_to comment.user.fullname, user_path(@post.user) %>
+        </div>
+        <div class="panel-body">
+          <%= comment.content %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="center col-lg-6 col-lg-offset-3 margin-button">
+    <%= form_with(model: Comment.new, local: true, url: comments_path, class: "form-inline") do |f| %>
+        <input type="hidden" name="comment[user_id]" value="<%= current_user.id %>">
+        <input type="hidden" name="comment[post_id]" value="<%= @post.id %>">
+        <%= f.text_field :content, class: "form-control", placeholder: "Content..." %>
+        <button class="btn btn-success center-block" style="display: inline" type="submit">Send comment</button>
+    <% end %>
+  </div>
+</div>
+
 <div class="center">
   <% if current_user == @post.user %>
     <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-default" %> |
   <% end %>
-  <%= link_to 'Back', posts_path, class: "btn btn-default" %>
+
+  <%= link_to 'Back', posts_path, class: "btn btn-default margin-button" %>
 </div>
