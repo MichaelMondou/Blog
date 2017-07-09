@@ -32,16 +32,18 @@
   </div>
 <% end %>
 
-<div class="row">
-  <div class="center col-lg-6 col-lg-offset-3 margin-button">
-    <%= form_with(model: Comment.new, local: true, url: comments_path, class: "form-inline") do |f| %>
-        <input type="hidden" name="comment[user_id]" value="<%= current_user.id %>">
-        <input type="hidden" name="comment[post_id]" value="<%= @post.id %>">
-        <%= f.text_field :content, class: "form-control", placeholder: "Content..." %>
-        <button class="btn btn-success center-block" style="display: inline" type="submit">Send comment</button>
-    <% end %>
+<% if !current_user.nil? %>
+  <div class="row">
+    <div class="center col-lg-6 col-lg-offset-3 margin-button">
+      <%= form_with(model: Comment.new, local: true, url: comments_path, class: "form-inline") do |f| %>
+          <input type="hidden" name="comment[user_id]" value="<%= current_user.id %>">
+          <input type="hidden" name="comment[post_id]" value="<%= @post.id %>">
+          <%= f.text_field :content, class: "form-control", placeholder: "Content..." %>
+          <button class="btn btn-success center-block" style="display: inline" type="submit">Send comment</button>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>
 
 <div class="center">
   <% if current_user == @post.user %>
