@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
-  before_action :own_the_post, only: [:update, :destroy]
+  before_action :own_the_post, only: [:edit, :update, :destroy]
 
   # Check if the user own the post
   def own_the_post
